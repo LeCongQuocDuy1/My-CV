@@ -7,7 +7,7 @@ import { loginSchema } from '../schemas/auth.schema';
 import { AppError } from '../middlewares/errorHandler';
 import { AuthRequest } from '../middlewares/isAuthenticated';
 
-const DEFAULT_AVATAR = 'https://res.cloudinary.com/quocduy/image/upload/my-cv/default-avatar';
+const DEFAULT_AVATAR = 'https://placehold.co/100x100?text=Admin';
 
 export async function login(req: Request, res: Response, next: NextFunction) {
   try {

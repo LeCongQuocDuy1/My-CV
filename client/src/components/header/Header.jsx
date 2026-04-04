@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import './header.css';
 
@@ -38,11 +38,6 @@ const Header = () => {
                         <li className="nav__item">
                             <a href="#skills" className="nav__link" onClick={() => setShowMenu(false)}>
                                 <i className="uil uil-file-alt nav__icon"></i> {nav.skills}
-                            </a>
-                        </li>
-                        <li className="nav__item">
-                            <a href="#services" className="nav__link" onClick={() => setShowMenu(false)}>
-                                <i className="uil uil-briefcase-alt nav__icon"></i> {nav.services}
                             </a>
                         </li>
                         <li className="nav__item">
