@@ -1,14 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
-import fs from 'fs';
-import path from 'path';
 import prisma from '../lib/prisma';
+import { uploadToCloudinary, deleteFromCloudinary } from '../lib/cloudinary';
 import { createProjectSchema, updateProjectSchema } from '../schemas/project.schema';
 import { AppError } from '../middlewares/errorHandler';
 
-function deleteFile(filePath: string) {
-  const full = path.join(process.cwd(), 'uploads', path.basename(filePath));
-  if (fs.existsSync(full)) fs.unlinkSync(full);
-}
+const DEFAULT_THUMBNAIL = 'https://res.cloudinary.com/quocduy/image/upload/my-cv/default-thumbnail';
 
 // Public: GET /api/projects
 export async function listProjects(_req: Request, res: Response, next: NextFunction) {
@@ -37,20 +33,21 @@ export async function getProject(req: Request, res: Response, next: NextFunction
   }
 }
 
-const DEFAULT_THUMBNAIL = '/public/defaults/default-thumbnail.svg';
-
 // Admin: POST /api/projects
 export async function createProject(req: Request, res: Response, next: NextFunction) {
   try {
     const data = createProjectSchema.parse(req.body);
-    const thumbnail = req.file ? `/uploads/${req.file.filename}` : DEFAULT_THUMBNAIL;
+    let thumbnail = DEFAULT_THUMBNAIL;
+
+    if (req.file) {
+      thumbnail = await uploadToCloudinary(req.file.buffer);
+    }
 
     const project = await prisma.project.create({
       data: { ...data, thumbnail },
     });
     res.status(201).json(project);
   } catch (err) {
-    if (req.file) deleteFile(req.file.filename);
     next(err);
   }
 }
@@ -66,8 +63,8 @@ export async function updateProject(req: Request, res: Response, next: NextFunct
     let thumbnail = existing.thumbnail;
 
     if (req.file) {
-      deleteFile(existing.thumbnail);
-      thumbnail = `/uploads/${req.file.filename}`;
+      await deleteFromCloudinary(existing.thumbnail);
+      thumbnail = await uploadToCloudinary(req.file.buffer);
     }
 
     const project = await prisma.project.update({
@@ -76,7 +73,6 @@ export async function updateProject(req: Request, res: Response, next: NextFunct
     });
     res.json(project);
   } catch (err) {
-    if (req.file) deleteFile(req.file.filename);
     next(err);
   }
 }
@@ -88,7 +84,7 @@ export async function deleteProject(req: Request, res: Response, next: NextFunct
     const existing = await prisma.project.findUnique({ where: { id } });
     if (!existing) return next(new AppError(404, 'Project not found'));
 
-    deleteFile(existing.thumbnail);
+    await deleteFromCloudinary(existing.thumbnail);
     await prisma.project.delete({ where: { id } });
     res.status(204).send();
   } catch (err) {

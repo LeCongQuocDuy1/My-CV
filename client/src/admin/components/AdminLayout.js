@@ -19,9 +19,8 @@ export default function AdminLayout({ children }) {
     navigate('/admin/login');
   }
 
-  const avatarSrc = account?.avatar
-    ? `${apiUrl}${account.avatar}`
-    : `${apiUrl}/public/defaults/default-avatar.svg`;
+  const DEFAULT_AVATAR = 'https://res.cloudinary.com/quocduy/image/upload/my-cv/default-avatar';
+  const avatarSrc = account?.avatar || DEFAULT_AVATAR;
 
   return (
     <div className="admin-root admin-layout">

@@ -40,7 +40,7 @@ export default function ProjectDetailPage() {
             <div className="pdetail-hero">
                 <div className="pdetail-hero__img-wrap">
                     <img
-                        src={`${API_URL}${project.thumbnail}`}
+                        src={project.thumbnail?.startsWith('http') ? project.thumbnail : `${API_URL}${project.thumbnail}`}
                         alt={project.title}
                         className="pdetail-hero__img"
                     />

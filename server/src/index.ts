@@ -19,11 +19,16 @@ app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 const allowedOrigins = [
   'http://localhost:3000',
   'https://lecongquocduy1.github.io',
+  'https://my-cv-client.vercel.app',
+  // allow all vercel preview URLs
 ];
 app.use(cors({
   origin: (origin, callback) => {
-    // Cho phép request không có origin (mobile, Postman, server-to-server)
-    if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
+    if (!origin) return callback(null, true);
+    // Allow exact matches or any *.vercel.app preview URLs
+    if (allowedOrigins.includes(origin) || /\.vercel\.app$/.test(origin)) {
+      return callback(null, true);
+    }
     callback(new Error('Not allowed by CORS'));
   },
   credentials: true,
@@ -52,7 +57,6 @@ const authLimiter = rateLimit({
 
 app.use(globalLimiter);
 app.use(express.json({ limit: '10mb' }));
-app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 app.use('/public', express.static(path.join(process.cwd(), 'public')));
 
 // ===== ROUTES =====

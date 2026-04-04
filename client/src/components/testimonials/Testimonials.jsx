@@ -13,13 +13,21 @@ SwiperCore.use([Autoplay]);
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
+function getThumbnailSrc(thumbnail) {
+    if (!thumbnail) return `${API_URL}/public/defaults/default-thumbnail.svg`;
+    // Cloudinary URLs are absolute
+    if (thumbnail.startsWith('http')) return thumbnail;
+    // Legacy local paths
+    return `${API_URL}${thumbnail}`;
+}
+
 function ProjectCard({ project, t }) {
     return (
         <div className="project__card">
             {/* Entire image area is a link */}
             <Link to={`/projects/${project.slug}`} className="project__card-img-wrap">
                 <img
-                    src={`${API_URL}${project.thumbnail}`}
+                    src={getThumbnailSrc(project.thumbnail)}
                     alt={project.title}
                     className="project__card-img"
                 />

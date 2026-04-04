@@ -1,21 +1,13 @@
 import { Request, Response, NextFunction } from 'express';
-import fs from 'fs';
-import path from 'path';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import prisma from '../lib/prisma';
+import { uploadToCloudinary, deleteFromCloudinary } from '../lib/cloudinary';
 import { loginSchema } from '../schemas/auth.schema';
 import { AppError } from '../middlewares/errorHandler';
 import { AuthRequest } from '../middlewares/isAuthenticated';
 
-const DEFAULT_AVATAR = '/public/defaults/default-avatar.svg';
-
-function deleteUploadedFile(filePath: string) {
-  if (filePath.startsWith('/uploads/')) {
-    const full = path.join(process.cwd(), 'uploads', path.basename(filePath));
-    if (fs.existsSync(full)) fs.unlinkSync(full);
-  }
-}
+const DEFAULT_AVATAR = 'https://res.cloudinary.com/quocduy/image/upload/my-cv/default-avatar';
 
 export async function login(req: Request, res: Response, next: NextFunction) {
   try {
@@ -48,11 +40,14 @@ export async function updateAvatar(req: AuthRequest, res: Response, next: NextFu
     const existing = await prisma.account.findUnique({ where: { id: req.accountId } });
     if (!existing) return next(new AppError(404, 'Account not found'));
 
-    const avatar = req.file ? `/uploads/${req.file.filename}` : DEFAULT_AVATAR;
+    let avatar = existing.avatar;
 
-    // Xóa ảnh cũ nếu không phải default
-    if (req.file && existing.avatar !== DEFAULT_AVATAR) {
-      deleteUploadedFile(existing.avatar);
+    if (req.file) {
+      // Delete old avatar from Cloudinary if not default
+      if (existing.avatar && !existing.avatar.includes('default-avatar')) {
+        await deleteFromCloudinary(existing.avatar);
+      }
+      avatar = await uploadToCloudinary(req.file.buffer, 'my-cv/avatars');
     }
 
     const updated = await prisma.account.update({
@@ -63,7 +58,6 @@ export async function updateAvatar(req: AuthRequest, res: Response, next: NextFu
 
     res.json(updated);
   } catch (err) {
-    if (req.file) deleteUploadedFile(`/uploads/${req.file.filename}`);
     next(err);
   }
 }
