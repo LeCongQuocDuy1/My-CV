@@ -179,9 +179,14 @@
 /*=============== BREAKPOINTS ===============*/
 @media screen and (max-width: 992px) {
     .projects__skeleton-grid { grid-template-columns: repeat(2, 1fr); }
+    .projects__container { padding-bottom: 2.5rem; }
 }
 
 @media screen and (max-width: 576px) {
     .projects__skeleton-grid { grid-template-columns: 1fr; }
-    .project__card-links { gap: 0.5rem; }
+    .project__card-links { gap: 0.5rem; flex-wrap: wrap; }
+    .project__card-body { padding: 1rem; }
+    .project__card-title { font-size: var(--normal-font-size); }
+    .project__card-overlay { opacity: 1; background: rgba(12,20,44,0.45); }
+    .project__card-btn { font-size: 0.75rem; padding: 0.5rem 1rem; }
 }

@@ -241,11 +241,19 @@
     .pdetail-body { grid-template-columns: 1fr; }
     .pdetail-sidebar { position: static; }
     .pdetail-hero__title { font-size: 1.75rem; }
+    .pdetail-sidebar__card { margin-bottom: 0.75rem; }
 }
 
 @media screen and (max-width: 576px) {
-    .pdetail-hero { min-height: 320px; }
-    .pdetail-hero__title { font-size: 1.4rem; }
-    .pdetail-hero__content { padding: 2rem 1rem 1.75rem; }
-    .pdetail-body { padding-top: 1.5rem; gap: 1.5rem; }
+    .pdetail-hero { min-height: 300px; }
+    .pdetail-hero__title { font-size: 1.3rem; }
+    .pdetail-hero__desc { font-size: 0.875rem; }
+    .pdetail-hero__content { padding: 1.5rem 1rem 1.5rem; }
+    .pdetail-body { padding-top: 1.25rem; gap: 1.25rem; padding-bottom: 2.5rem; }
+    .pdetail-hero__links { flex-direction: column; gap: 0.6rem; }
+    .pdetail-btn { width: 100%; justify-content: center; }
+    .pdetail-nav__inner { padding: 0.75rem 1rem; }
+    .prose h1 { font-size: 1.4rem; }
+    .prose h2 { font-size: 1.15rem; }
+    .prose pre { padding: 0.875rem 1rem; border-radius: 0.5rem; }
 }

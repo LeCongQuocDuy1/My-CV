@@ -122,3 +122,14 @@
   color: var(--text-muted); background: var(--bg-card);
   border-top: 1px solid var(--border);
 }
+
+/* ===== RESPONSIVE ===== */
+@media screen and (max-width: 768px) {
+  .mde__panes--split { flex-direction: column; }
+  .mde__panes--split .mde__pane--editor { border-right: none; border-bottom: 1px solid var(--border); }
+  .mde__panes--split .mde__pane--editor,
+  .mde__panes--split .mde__pane--preview { min-height: 200px; }
+  .mde__toolbar { flex-direction: column; align-items: flex-start; gap: 0.375rem; }
+  .mde__toolbar-modes { align-self: flex-end; }
+  .mde__tb-btn { padding: 0.2rem 0.4rem; }
+}
