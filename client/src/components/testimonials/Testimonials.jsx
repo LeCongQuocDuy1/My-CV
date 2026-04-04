@@ -14,7 +14,7 @@ SwiperCore.use([Autoplay]);
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 function getThumbnailSrc(thumbnail) {
-    if (!thumbnail) return '/default-thumbnail.svg';
+    if (!thumbnail || thumbnail === '') return '/default-thumbnail.svg';
     if (thumbnail.startsWith('http')) return thumbnail;
     return `${API_URL}${thumbnail}`;
 }

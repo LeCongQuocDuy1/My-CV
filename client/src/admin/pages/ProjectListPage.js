@@ -9,6 +9,12 @@ import '../admin.css';
 export default function ProjectListPage() {
   const queryClient = useQueryClient();
   const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
+  function getThumbSrc(thumbnail) {
+    if (!thumbnail) return '/default-thumbnail.svg';
+    if (thumbnail.startsWith('http')) return thumbnail;
+    return `${apiUrl}${thumbnail}`;
+  }
   const [deletingId, setDeletingId] = useState(null);
 
   const { data: projects = [], isLoading } = useQuery({
@@ -113,7 +119,7 @@ export default function ProjectListPage() {
                   <td>
                     <img
                       className="admin-table__thumb"
-                      src={`${apiUrl}${p.thumbnail}`}
+                      src={getThumbSrc(p.thumbnail)}
                       alt={p.title}
                     />
                   </td>
