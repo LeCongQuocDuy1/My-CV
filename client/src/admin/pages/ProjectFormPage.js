@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import api from '../../lib/axios';
+import { toast } from 'sonner';
 import AdminLayout from '../components/AdminLayout';
 import MarkdownEditor from '../components/MarkdownEditor';
 import '../admin.css';
@@ -60,10 +61,13 @@ export default function ProjectFormPage() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admin-projects'] });
+      toast.success(isEdit ? 'Cập nhật dự án thành công!' : 'Tạo dự án thành công!');
       navigate('/admin');
     },
     onError: (err) => {
-      setError(err.response?.data?.error || err.response?.data?.details?.[0]?.message || 'Có lỗi xảy ra');
+      const msg = err.response?.data?.error || err.response?.data?.details?.[0]?.message || 'Có lỗi xảy ra';
+      setError(msg);
+      toast.error(msg);
     },
   });
 

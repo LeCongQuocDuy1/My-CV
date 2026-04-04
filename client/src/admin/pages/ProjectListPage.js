@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { toast } from 'sonner';
 import api from '../../lib/axios';
 import AdminLayout from '../components/AdminLayout';
 import '../admin.css';
@@ -20,7 +21,11 @@ export default function ProjectListPage() {
 
   const deleteMutation = useMutation({
     mutationFn: (id) => api.delete(`/api/projects/${id}`),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['admin-projects'] }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['admin-projects'] });
+      toast.success('Đã xóa dự án thành công!');
+    },
+    onError: () => toast.error('Xóa thất bại, vui lòng thử lại.'),
   });
 
   function handleDelete(project) {

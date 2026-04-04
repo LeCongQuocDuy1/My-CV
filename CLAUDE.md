@@ -86,8 +86,8 @@ Each component lives in `src/components/<Name>/` with its own `.jsx` and `.css` 
 [x] 4.5. Tạo trang chi tiết /projects/[slug] dùng Tailwind Typography (prose).
 
 📧 SPRINT 5: CONTACT & FINAL POLISH
-[ ] 5.1. Viết API /api/contact tích hợp Resend để gửi mail thông báo.
+[x] 5.1. Viết API /api/contact tích hợp Resend để gửi mail thông báo.
 
-[ ] 5.2. Thêm hiệu ứng Skeleton Loading và Toast Notifications (sonner).
+[x] 5.2. Thêm hiệu ứng Skeleton Loading và Toast Notifications (sonner).
 
-[ ] 5.3. Kiểm tra bảo mật (CORS, Rate Limit) và tối ưu hóa SEO.
+[x] 5.3. Kiểm tra bảo mật (CORS, Rate Limit) và tối ưu hóa SEO.
