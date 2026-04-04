@@ -32,7 +32,7 @@ function Contact() {
                             <h3 className="contact__card-title">Email</h3>
                             <span className="contact__card-data">duy9117@gmail.com</span>
 
-                            <a href="#" className="contact__button">Write me <i className="bx bx-right-arrow-alt contact__button-icon"></i></a>
+                            <a href="/" className="contact__button">Write me <i className="bx bx-right-arrow-alt contact__button-icon"></i></a>
                         </div>
                         <div className="contact__card">
                             <i className="bx bxl-whatsapp contact__card-icon"></i>
@@ -40,7 +40,7 @@ function Contact() {
                             <h3 className="contact__card-title">Whatsapp</h3>
                             <span className="contact__card-data">103-244-716</span>
 
-                            <a href="#" className="contact__button">Write me <i className="bx bx-right-arrow-alt"></i></a>
+                            <a href="/" className="contact__button">Write me <i className="bx bx-right-arrow-alt"></i></a>
                         </div>
                         <div className="contact__card">
                             <i className="bx bxl-messenger contact__card-icon"></i>
@@ -48,7 +48,7 @@ function Contact() {
                             <h3 className="contact__card-title">Messenger</h3>
                             <span className="contact__card-data">facebook.com/lequocduy1003</span>
 
-                            <a href="#" className="contact__button">Write me <i className="bx bx-right-arrow-alt"></i></a>
+                            <a href="/" className="contact__button">Write me <i className="bx bx-right-arrow-alt"></i></a>
                         </div>
                     </div>
                 </div>
