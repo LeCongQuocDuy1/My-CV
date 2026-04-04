@@ -3,6 +3,14 @@
     padding-bottom: 3rem;
 }
 
+/* Force equal height slides */
+.projects__container .swiper-wrapper {
+    align-items: stretch;
+}
+.projects__container .swiper-slide {
+    height: auto;
+}
+
 /* CARD */
 .project__card {
     background-color: var(--container-color);
