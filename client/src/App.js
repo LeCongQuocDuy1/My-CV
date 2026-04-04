@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { Toaster } from 'sonner';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './admin/components/PrivateRoute';
 import LoginPage from './admin/pages/LoginPage';
@@ -38,6 +39,7 @@ function CVSite() {
 function App() {
   return (
     <AuthProvider>
+      <Toaster position="top-right" richColors closeButton />
       <Routes>
         {/* Public CV site */}
         <Route path="/" element={<CVSite />} />
