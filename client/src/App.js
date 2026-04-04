@@ -4,6 +4,7 @@ import PrivateRoute from './admin/components/PrivateRoute';
 import LoginPage from './admin/pages/LoginPage';
 import ProjectListPage from './admin/pages/ProjectListPage';
 import ProjectFormPage from './admin/pages/ProjectFormPage';
+import ProjectDetailPage from './pages/ProjectDetailPage';
 
 import './App.css';
 import Header from './components/header/Header';
@@ -40,6 +41,7 @@ function App() {
       <Routes>
         {/* Public CV site */}
         <Route path="/" element={<CVSite />} />
+        <Route path="/projects/:slug" element={<ProjectDetailPage />} />
 
         {/* Admin */}
         <Route path="/admin/login" element={<LoginPage />} />

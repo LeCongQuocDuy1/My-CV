@@ -81,9 +81,9 @@ Each component lives in `src/components/<Name>/` with its own `.jsx` and `.css` 
 
 [x] 4.3. Tích hợp Markdown Editor (Textarea) và Preview cho phần nội dung chi tiết.
 
-[ ] 4.4. Cập nhật trang chủ (Slide dự án) gọi dữ liệu từ API thay vì fix cứng.
+[x] 4.4. Cập nhật trang chủ (Slide dự án) gọi dữ liệu từ API thay vì fix cứng.
 
-[ ] 4.5. Tạo trang chi tiết /projects/[slug] dùng Tailwind Typography (prose).
+[x] 4.5. Tạo trang chi tiết /projects/[slug] dùng Tailwind Typography (prose).
 
 📧 SPRINT 5: CONTACT & FINAL POLISH
 [ ] 5.1. Viết API /api/contact tích hợp Resend để gửi mail thông báo.
