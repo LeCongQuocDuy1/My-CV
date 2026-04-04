@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import api from '../../lib/axios';
 import AdminLayout from '../components/AdminLayout';
+import MarkdownEditor from '../components/MarkdownEditor';
 import '../admin.css';
 
 const EMPTY_FORM = {
@@ -194,13 +195,13 @@ export default function ProjectFormPage() {
             {/* Content Markdown */}
             <div className="admin-field">
               <label className="admin-label">📄 Nội dung chi tiết (Markdown) *</label>
-              <textarea
-                className="admin-textarea" name="content"
-                placeholder={`## Giới thiệu\n\nMô tả chi tiết về dự án...\n\n## Tính năng\n\n- Feature 1\n- Feature 2`}
-                value={form.content} onChange={handleChange}
-                rows={12} required
-                style={{ minHeight: '240px', fontFamily: "'Fira Code', 'Cascadia Code', monospace", fontSize: '0.85rem' }}
+              <MarkdownEditor
+                value={form.content}
+                onChange={handleChange}
+                placeholder={'## Giới thiệu\n\nMô tả chi tiết về dự án...\n\n## Tính năng\n\n- Feature 1\n- Feature 2'}
               />
+              {/* Hidden input để đảm bảo required validation */}
+              <input type="text" required value={form.content} onChange={() => {}} style={{ position: 'absolute', opacity: 0, pointerEvents: 'none', height: 0 }} />
             </div>
 
             {/* Thumbnail */}

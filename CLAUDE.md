@@ -79,7 +79,7 @@ Each component lives in `src/components/<Name>/` with its own `.jsx` and `.css` 
 
 [x] 4.2. Xây dựng trang Admin Dashboard đơn giản (Login, List, Form Add/Edit).
 
-[ ] 4.3. Tích hợp Markdown Editor (Textarea) và Preview cho phần nội dung chi tiết.
+[x] 4.3. Tích hợp Markdown Editor (Textarea) và Preview cho phần nội dung chi tiết.
 
 [ ] 4.4. Cập nhật trang chủ (Slide dự án) gọi dữ liệu từ API thay vì fix cứng.
 
