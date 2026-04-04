@@ -54,25 +54,25 @@ Each component lives in `src/components/<Name>/` with its own `.jsx` and `.css` 
 
 [x] 1.3. Kết nối Database (Neon/Postgres) và chạy migration.
 
-[ ] 1.4. Thiết lập Global Error Middleware và Zod Validation.
+[x] 1.4. Thiết lập Global Error Middleware và Zod Validation.
 
 🟡 SPRINT 2: AUTHENTICATION & SECURITY
-[ ] 2.1. Viết logic Hash mật khẩu (Bcrypt) và tạo tài khoản Admin đầu tiên.
+[x] 2.1. Viết logic Hash mật khẩu (Bcrypt) và tạo tài khoản Admin đầu tiên.
 
-[ ] 2.2. Viết API Login /api/auth/login (Trả về JWT Token).
+[x] 2.2. Viết API Login /api/auth/login (Trả về JWT Token).
 
-[ ] 2.3. Viết Middleware isAuthenticated để bảo vệ các route nội bộ.
+[x] 2.3. Viết Middleware isAuthenticated để bảo vệ các route nội bộ.
 
 🟠 SPRINT 3: PROJECT MANAGEMENT (CRUD)
-[ ] 3.1. Cấu hình Multer để xử lý Upload ảnh Thumbnail.
+[x] 3.1. Cấu hình Multer để xử lý Upload ảnh Thumbnail.
 
-[ ] 3.2. Viết API POST /api/projects (Tạo dự án mới kèm upload ảnh).
+[x] 3.2. Viết API POST /api/projects (Tạo dự án mới kèm upload ảnh).
 
-[ ] 3.3. Viết API PUT /api/projects/:id (Cập nhật dự án + Xóa ảnh cũ nếu đổi ảnh).
+[x] 3.3. Viết API PUT /api/projects/:id (Cập nhật dự án + Xóa ảnh cũ nếu đổi ảnh).
 
-[ ] 3.4. Viết API DELETE /api/projects/:id (Xóa dự án + Xóa file ảnh vật lý).
+[x] 3.4. Viết API DELETE /api/projects/:id (Xóa dự án + Xóa file ảnh vật lý).
 
-[ ] 3.5. Viết API Public: GET /api/projects (List) và GET /api/projects/:slug (Detail).
+[x] 3.5. Viết API Public: GET /api/projects (List) và GET /api/projects/:slug (Detail).
 
 🔵 SPRINT 4: FRONTEND INTEGRATION & ADMIN UI
 [ ] 4.1. Cài đặt React Query và thiết lập fetch dữ liệu từ API Backend.
