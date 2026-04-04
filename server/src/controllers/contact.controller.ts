@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { Resend } from 'resend';
 import { contactSchema } from '../schemas/contact.schema';
+import { AppError } from '../middlewares/errorHandler';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -8,9 +9,13 @@ export async function sendContact(req: Request, res: Response, next: NextFunctio
   try {
     const { name, email, subject, message } = contactSchema.parse(req.body);
 
-    await resend.emails.send({
+    const toEmail = process.env.CONTACT_TO_EMAIL || 'duy9117@gmail.com';
+
+    const { data, error } = await resend.emails.send({
+      // Resend free tier: from phải là onboarding@resend.dev
+      // Khi có domain riêng thì đổi thành: noreply@yourdomain.com
       from: 'Portfolio Contact <onboarding@resend.dev>',
-      to: process.env.CONTACT_TO_EMAIL || 'duy9117@gmail.com',
+      to: toEmail,
       replyTo: email,
       subject: `[Portfolio] ${subject}`,
       html: `
@@ -48,6 +53,12 @@ export async function sendContact(req: Request, res: Response, next: NextFunctio
       `,
     });
 
+    if (error) {
+      console.error('Resend error:', error);
+      return next(new AppError(500, `Gửi email thất bại: ${error.message}`));
+    }
+
+    console.log('Email sent successfully, id:', data?.id);
     res.json({ success: true, message: 'Tin nhắn đã được gửi thành công!' });
   } catch (err) {
     next(err);
