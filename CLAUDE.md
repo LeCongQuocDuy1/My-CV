@@ -75,7 +75,7 @@ Each component lives in `src/components/<Name>/` with its own `.jsx` and `.css` 
 [x] 3.5. Viết API Public: GET /api/projects (List) và GET /api/projects/:slug (Detail).
 
 🔵 SPRINT 4: FRONTEND INTEGRATION & ADMIN UI
-[ ] 4.1. Cài đặt React Query và thiết lập fetch dữ liệu từ API Backend.
+[x] 4.1. Cài đặt React Query và thiết lập fetch dữ liệu từ API Backend.
 
 [ ] 4.2. Xây dựng trang Admin Dashboard đơn giản (Login, List, Form Add/Edit).
 

@@ -1,6 +1,6 @@
 import './testimonials.css';
 import { Data } from './Data';
-import React, { useRef, useState } from "react";
+import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay } from 'swiper';
