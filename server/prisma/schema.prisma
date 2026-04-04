@@ -4,15 +4,14 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "postgresql"
 }
 
 model Account {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   password  String
+  avatar    String   @default("/public/defaults/default-avatar.svg")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -23,7 +22,7 @@ model Project {
   slug        String   @unique
   description String
   content     String
-  thumbnail   String
+  thumbnail   String   @default("/public/defaults/default-thumbnail.svg")
   techStack   String[]
   liveUrl     String?
   repoUrl     String?
