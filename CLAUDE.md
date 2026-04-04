@@ -48,11 +48,11 @@ Each component lives in `src/components/<Name>/` with its own `.jsx` and `.css` 
 
 🚀 DEVELOPMENT ROADMAP (CHECKLIST)
 🟢 SPRINT 1: BACKEND INFRASTRUCTURE
-[ ] 1.1. Khởi tạo dự án Express + TypeScript trong thư mục /server.
+[x] 1.1. Khởi tạo dự án Express + TypeScript trong thư mục /server.
 
-[ ] 1.2. Cấu hình Prisma & thiết lập Schema (Bảng Account và Project).
+[x] 1.2. Cấu hình Prisma & thiết lập Schema (Bảng Account và Project).
 
-[ ] 1.3. Kết nối Database (Neon/Postgres) và chạy migration.
+[x] 1.3. Kết nối Database (Neon/Postgres) và chạy migration.
 
 [ ] 1.4. Thiết lập Global Error Middleware và Zod Validation.
 
