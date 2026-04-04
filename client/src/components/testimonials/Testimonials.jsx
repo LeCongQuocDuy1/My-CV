@@ -14,10 +14,8 @@ SwiperCore.use([Autoplay]);
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 function getThumbnailSrc(thumbnail) {
-    if (!thumbnail) return `${API_URL}/public/defaults/default-thumbnail.svg`;
-    // Cloudinary URLs are absolute
+    if (!thumbnail) return '/default-thumbnail.svg';
     if (thumbnail.startsWith('http')) return thumbnail;
-    // Legacy local paths
     return `${API_URL}${thumbnail}`;
 }
 

@@ -4,7 +4,7 @@ import { uploadToCloudinary, deleteFromCloudinary } from '../lib/cloudinary';
 import { createProjectSchema, updateProjectSchema } from '../schemas/project.schema';
 import { AppError } from '../middlewares/errorHandler';
 
-const DEFAULT_THUMBNAIL = 'https://placehold.co/800x450?text=No+Image';
+const DEFAULT_THUMBNAIL = '';
 
 // Public: GET /api/projects
 export async function listProjects(_req: Request, res: Response, next: NextFunction) {
