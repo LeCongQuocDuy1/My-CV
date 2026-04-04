@@ -43,8 +43,15 @@ export async function createProject(req: Request, res: Response, next: NextFunct
       thumbnail = await uploadToCloudinary(req.file.buffer);
     }
 
+    // Auto-assign order as max+1 if not provided
+    let order = data.order;
+    if (order === undefined || order === null) {
+      const last = await prisma.project.findFirst({ orderBy: { order: 'desc' } });
+      order = (last?.order ?? -1) + 1;
+    }
+
     const project = await prisma.project.create({
-      data: { ...data, thumbnail },
+      data: { ...data, order, thumbnail },
     });
     res.status(201).json(project);
   } catch (err) {

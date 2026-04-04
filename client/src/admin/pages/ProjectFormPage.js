@@ -9,7 +9,7 @@ import '../admin.css';
 
 const EMPTY_FORM = {
   title: '', slug: '', description: '', content: '',
-  techStack: '', liveUrl: '', repoUrl: '', order: 0,
+  techStack: '', liveUrl: '', repoUrl: '',
 };
 
 function toSlug(str) {
@@ -46,9 +46,9 @@ export default function ProjectFormPage() {
         description: data.description, content: data.content,
         techStack: data.techStack.join(', '),
         liveUrl: data.liveUrl || '', repoUrl: data.repoUrl || '',
-        order: data.order,
       });
-      setPreview(`${apiUrl}${data.thumbnail}`);
+      const thumb = data.thumbnail;
+      setPreview(!thumb ? '' : thumb.startsWith('http') ? thumb : `${apiUrl}${thumb}`);
     });
   }, [isEdit, id, projects, apiUrl]);
 
@@ -155,23 +155,14 @@ export default function ProjectFormPage() {
               />
             </div>
 
-            {/* Tech & Order */}
-            <div className="admin-form-row">
-              <div className="admin-field">
-                <label className="admin-label">Tech Stack</label>
-                <input
-                  className="admin-input" name="techStack"
-                  placeholder="React, TypeScript, Node.js"
-                  value={form.techStack} onChange={handleChange}
-                />
-              </div>
-              <div className="admin-field">
-                <label className="admin-label">Thứ tự hiển thị</label>
-                <input
-                  className="admin-input" type="number" name="order"
-                  value={form.order} onChange={handleChange} min={0}
-                />
-              </div>
+            {/* Tech Stack */}
+            <div className="admin-field">
+              <label className="admin-label">Tech Stack</label>
+              <input
+                className="admin-input" name="techStack"
+                placeholder="React, TypeScript, Node.js"
+                value={form.techStack} onChange={handleChange}
+              />
             </div>
 
             {/* URLs */}

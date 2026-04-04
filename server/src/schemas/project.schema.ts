@@ -10,7 +10,7 @@ export const createProjectSchema = z.object({
   ),
   liveUrl: z.string().url().optional().or(z.literal('')),
   repoUrl: z.string().url().optional().or(z.literal('')),
-  order: z.coerce.number().int().default(0),
+  order: z.coerce.number().int().optional(),
 });
 
 export const updateProjectSchema = createProjectSchema.partial();
