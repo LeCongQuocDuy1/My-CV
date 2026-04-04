@@ -1,6 +1,10 @@
+import { useLanguage } from '../../context/LanguageContext';
 import './footer.css';
 
 function Footer() {
+    const { t } = useLanguage();
+    const f = t.footer;
+
     return (
         <footer className="footer">
             <div className="footer__container container">
@@ -8,29 +12,29 @@ function Footer() {
 
                 <ul className="footer__list">
                     <li>
-                        <a href="#about" className='footer__link'>About</a>
+                        <a href="#about" className='footer__link'>{f.about}</a>
                     </li>
                     <li>
-                        <a href="#portfolio" className='footer__link'>Project</a>
+                        <a href="#portfolio" className='footer__link'>{f.project}</a>
                     </li>
                     <li>
-                        <a href="#testimonials" className='footer__link'>Testimonials</a>
+                        <a href="#testimonials" className='footer__link'>{f.testimonials}</a>
                     </li>
                 </ul>
 
                 <div className="footer__social">
                     <a href="https://www.facebook.com/helianthusanuus1003" className="footer__social-link" target="_blank" rel="noreferrer">
-                        <i class="uil uil-facebook"></i>
+                        <i className="uil uil-facebook"></i>
                     </a>
                     <a href="https://www.google.com/intl/vi/gmail/about/" className="footer__social-link" target="_blank" rel="noreferrer">
-                        <i class="uil uil-envelope-alt"></i>
+                        <i className="uil uil-envelope-alt"></i>
                     </a>
                     <a href="https://github.com/HelianthusAnnuus1003" className="footer__social-link" target="_blank" rel="noreferrer">
-                        <i class="uil uil-github"></i>
+                        <i className="uil uil-github"></i>
                     </a>
                 </div>
 
-                <span className="footer__copyright">&#169; LeQuocDuyMyCV. All rights of Le Cong Quoc Duy</span>
+                <span className="footer__copyright">{f.copyright}</span>
             </div>
         </footer>
     );

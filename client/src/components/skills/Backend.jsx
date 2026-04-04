@@ -1,7 +1,7 @@
-function Backend() {
+function Backend({ t }) {
     return (
-        <div className="skills__content">
-            <h3 className="skills__title">Backend Developer</h3>
+        <div className="skills__content" data-aos="fade-left">
+            <h3 className="skills__title">{t ? t.skills.backend : 'Backend Developer'}</h3>
             <div className="skills__box">
                 <div className="skills__group">
                     <div className="skills__data">

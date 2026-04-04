@@ -14,7 +14,9 @@ const Home = () => {
                     <div className="home__img">
                     </div>
 
-                    <Data />
+                    <div data-aos="fade-left">
+                        <Data />
+                    </div>
                 </div>
 
                 <ScrollDown />

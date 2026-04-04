@@ -30,6 +30,7 @@
 
 /* IMAGE */
 .project__card-img-wrap {
+    display: block;
     position: relative;
     overflow: hidden;
     aspect-ratio: 16 / 9;

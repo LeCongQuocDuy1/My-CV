@@ -1,6 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
 import { Toaster } from 'sonner';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { AuthProvider } from './context/AuthContext';
+import { LanguageProvider } from './context/LanguageContext';
 import PrivateRoute from './admin/components/PrivateRoute';
 import LoginPage from './admin/pages/LoginPage';
 import ProjectListPage from './admin/pages/ProjectListPage';
@@ -19,6 +23,10 @@ import Contact from './components/contact/Contact';
 import Footer from './components/footer/Footer';
 
 function CVSite() {
+  useEffect(() => {
+    AOS.init({ duration: 700, once: true, offset: 60 });
+  }, []);
+
   return (
     <div className="App">
       <Header />
@@ -39,18 +47,20 @@ function CVSite() {
 function App() {
   return (
     <AuthProvider>
-      <Toaster position="top-right" richColors closeButton />
-      <Routes>
-        {/* Public CV site */}
-        <Route path="/" element={<CVSite />} />
-        <Route path="/projects/:slug" element={<ProjectDetailPage />} />
+      <LanguageProvider>
+        <Toaster position="top-right" richColors closeButton />
+        <Routes>
+          {/* Public CV site */}
+          <Route path="/" element={<CVSite />} />
+          <Route path="/projects/:slug" element={<ProjectDetailPage />} />
 
-        {/* Admin */}
-        <Route path="/admin/login" element={<LoginPage />} />
-        <Route path="/admin" element={<PrivateRoute><ProjectListPage /></PrivateRoute>} />
-        <Route path="/admin/projects/new" element={<PrivateRoute><ProjectFormPage /></PrivateRoute>} />
-        <Route path="/admin/projects/:id/edit" element={<PrivateRoute><ProjectFormPage /></PrivateRoute>} />
-      </Routes>
+          {/* Admin */}
+          <Route path="/admin/login" element={<LoginPage />} />
+          <Route path="/admin" element={<PrivateRoute><ProjectListPage /></PrivateRoute>} />
+          <Route path="/admin/projects/new" element={<PrivateRoute><ProjectFormPage /></PrivateRoute>} />
+          <Route path="/admin/projects/:id/edit" element={<PrivateRoute><ProjectFormPage /></PrivateRoute>} />
+        </Routes>
+      </LanguageProvider>
     </AuthProvider>
   );
 }

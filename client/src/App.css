@@ -6,13 +6,17 @@
   --header-height: 3rem;
 
   /*========== Colors ==========*/
-  /*Color mode HSL(hue, saturation, lightness)*/
   --hue: 0;
   --sat: 0%;
   --title-color: rgb(124, 160, 43);
   --title-color-dark: rgb(103, 136, 25);
+  --first-color: rgb(124, 160, 43);
+  --first-color-alt: rgb(103, 136, 25);
+  --first-color-rgb: 124, 160, 43;
   --text-color: hsl(var(--hue), var(--sat), 46%);
+  --text-color-light: hsl(var(--hue), var(--sat), 65%);
   --body-color: hsl(var(--hue), var(--sat), 98%);
+  --body-color-rgb: 249, 249, 249;
   --container-color: #fff;
 
   /*========== Font and typography ==========*/
@@ -48,6 +52,20 @@
   --z-tooltip: 10;
   --z-fixed: 100;
   --z-modal: 1000;
+}
+
+/*=============== DARK THEME ===============*/
+[data-theme="dark"] {
+  --title-color: rgb(160, 200, 60);
+  --title-color-dark: rgb(180, 220, 80);
+  --first-color: rgb(160, 200, 60);
+  --first-color-alt: rgb(140, 180, 45);
+  --first-color-rgb: 160, 200, 60;
+  --text-color: hsl(0, 0%, 68%);
+  --text-color-light: hsl(0, 0%, 50%);
+  --body-color: hsl(0, 0%, 10%);
+  --body-color-rgb: 26, 26, 26;
+  --container-color: hsl(0, 0%, 16%);
 }
 
 /* Responsive typography */
