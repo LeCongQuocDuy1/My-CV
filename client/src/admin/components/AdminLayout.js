@@ -11,7 +11,6 @@ const NAV_ITEMS = [
 export default function AdminLayout({ children }) {
   const { account, logout } = useAuth();
   const navigate = useNavigate();
-  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   function handleLogout() {
